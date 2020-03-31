@@ -1,10 +1,8 @@
-const express = require('express');
+const nconf = require('nconf');
 
-const port = 3000;
-const app = express();
+nconf.argv()
+    .env({lowerCase: true, whitelist: ['projects_folder']});
 
-const configuration = require('./src');
+const {getAllProjects, getProjectFiles, createProject} = require('./src/project');
 
-app.get('/', (req, res) => res.send('Hello World!'))
-
-app.listen(port, () => console.log(`Example app listening on port ${port}!`))
+module.exports = {getAllProjects, getProjectFiles, createProject};

@@ -47,9 +47,9 @@ const getProjectFiles = async (projectName) => {
     const projectsFolder = nconf.get('projects_folder');
     const path = `${projectsFolder}/${projectName}`;
 
-    const isDir = await fsPromises.stat(path).isDirectory();
+    const fsStat = await fsPromises.stat(path)
 
-    if (isDir) {
+    if (fsStat.isDirectory()) {
         const filenames = await fsPromises.readdir(path);
         return filenames;
     }
