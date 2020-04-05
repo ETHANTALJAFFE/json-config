@@ -10,6 +10,11 @@
     -   [getAllProjects](#getallprojects)
     -   [getProjectConfigurations](#getprojectconfigurations)
         -   [Parameters](#parameters-1)
+-   [ConfigurationManagement](#configurationmanagement)
+    -   [getConfiguration](#getconfiguration)
+        -   [Parameters](#parameters-2)
+    -   [createConfiguration](#createconfiguration)
+        -   [Parameters](#parameters-3)
 
 ## ProjectManagement
 
@@ -42,3 +47,32 @@ Retrieves the configurations _filenames_ inside the directory of **projectName**
 -   Throws **[Error](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Error)** Project does not exist
 
 Returns **any** string\[]
+
+## ConfigurationManagement
+
+### getConfiguration
+
+Retrieves the _Configuration File_ with **configName** for given **projectName**
+
+#### Parameters
+
+-   `projectName`  {string} - The project that contains the requested configuration file
+-   `configName`  {string} - The requested configuration file
+-   `suffix`  {string=} - a suffix to append to the _filename_
+    configName when retrieving it.
+
+Returns **[object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** 
+
+### createConfiguration
+
+Creates a new _Configuration File_ named **configName** with **configData** inside of an existing project with
+given **projectName**
+
+#### Parameters
+
+-   `projectName`  The project that contains the requested configuration file
+-   `configName`  } - The requested configuration file
+-   `configData`  The configuration you wish to store
+-   `suffix`  {string=} - a suffix to append to the _filename_
+
+Returns **[Promise](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)&lt;[boolean](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean)>** 
