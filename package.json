@@ -12,13 +12,12 @@
   "lint-staged": {
     "src/**/*.js, index.js": [
       "eslint . --fix",
-      "npm run doc",
       "git add"
     ]
   },
   "husky": {
     "hooks": {
-      "pre-commit": "lint-staged"
+      "pre-commit": "lint-staged && npm run doc"
     }
   },
   "repository": {
