@@ -1,8 +1,5 @@
-const express = require('express');
+import ProjectManagement from './src/project-management';
+import ConfigurationManagement from './src/configuration-management';
 
-const port = 3000;
-const app = express();
-
-app.get('/', (req, res) => res.send('Hello World!'))
-
-app.listen(port, () => console.log(`Example app listening on port ${port}!`))
+const JsonConfiguratorStore = { ProjectManagement, ConfigurationManagement };
+export default JsonConfiguratorStore;
