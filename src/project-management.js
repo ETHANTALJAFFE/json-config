@@ -1,4 +1,5 @@
 import nconf from 'nconf';
+import config from '../config.json';
 
 nconf.argv()
     .env({ lowerCase: true, whitelist: ['projects_folder'] });
@@ -11,8 +12,6 @@ const fs = require('fs');
 
 const fsPromises = fs.promises;
 
-const SCHEMAS_FOLDER = 'schema';
-const CONFIGURATIONS_FOLDER = 'config';
 
 /**
  *
@@ -30,8 +29,8 @@ const ProjectManagement = {
         const path = `${projectsFolder}/${projectName}`;
 
         await fsPromises.mkdir(path);
-        await fsPromises.mkdir(`${path}/${CONFIGURATIONS_FOLDER}`);
-        await fsPromises.mkdir(`${path}/${SCHEMAS_FOLDER}`);
+        await fsPromises.mkdir(`${path}/${config.CONFIGURATIONS_FOLDER}`);
+        await fsPromises.mkdir(`${path}/${config.SCHEMAS_FOLDER}`);
         return true;
     },
     /**
@@ -52,7 +51,7 @@ const ProjectManagement = {
  */
     getProjectConfigurations: async (projectName) => {
         const projectsFolder = nconf.get('projects_folder');
-        const path = `${projectsFolder}/${projectName}/${CONFIGURATIONS_FOLDER}`;
+        const path = `${projectsFolder}/${projectName}/${config.CONFIGURATIONS_FOLDER}`;
 
         const fsStat = await fsPromises.stat(path);
         if (fsStat.isDirectory()) {

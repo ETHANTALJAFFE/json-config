@@ -17,6 +17,6 @@
     "rules": {
         "indent": ["error", 4],
         "no-empty": ["error", {"allowEmptyCatch":  true}],
-        "max-len": ["error", {"ignoreComments":  true, "code":  110}]
+        "max-len": ["error", {"ignoreComments":  true, "code":  120}]
     }
 }
