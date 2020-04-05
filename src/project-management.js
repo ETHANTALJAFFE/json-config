@@ -14,7 +14,6 @@ const fsPromises = fs.promises;
 
 
 /**
- *
  * @name ProjectManagement
  */
 const ProjectManagement = {
@@ -46,7 +45,7 @@ const ProjectManagement = {
     /**
  * Retrieves the configurations *filenames* inside the directory of **projectName**
  * @param projectName
- * @return string[]
+ * @return {string[]}
  * @throws {Error} Project does not exist
  */
     getProjectConfigurations: async (projectName) => {

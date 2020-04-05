@@ -46,7 +46,7 @@ Retrieves the configurations _filenames_ inside the directory of **projectName**
 
 -   Throws **[Error](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Error)** Project does not exist
 
-Returns **any** string\[]
+Returns **[Array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)>** 
 
 ## ConfigurationManagement
 
@@ -70,9 +70,9 @@ given **projectName**
 
 #### Parameters
 
--   `projectName`  The project that contains the requested configuration file
--   `configName`  } - The requested configuration file
--   `configData`  The configuration you wish to store
--   `suffix`  {string=} - a suffix to append to the _filename_
+-   `projectName` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** The project that contains the requested configuration file
+-   `configName` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** The requested configuration file
+-   `configData` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** The configuration you wish to store
+-   `suffix` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)?** a suffix to append to the _filename_
 
 Returns **[Promise](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)&lt;[boolean](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean)>** 
