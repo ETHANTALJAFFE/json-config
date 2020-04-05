@@ -1,8 +1,12 @@
 /**
- * @module Project Management
+ * Project Management
+ * @alias ProjectManagement
  */
 
-const nconf = require('nconf');
+import nconf from 'nconf';
+
+nconf.argv()
+    .env({ lowerCase: true, whitelist: ['projects_folder'] });
 
 if (!nconf.get('projects_folder')) {
     throw new Error('PROJECTS_FOLDER is undefined');
@@ -46,17 +50,17 @@ const getAllProjects = async () => {
  * Retrieves the *filenames* inside the directory of **projectName**
  * @param projectName
  * @return string[]
+ * @throws Will throw 'Project does not exist'
  */
 const getProjectConfigurations = async (projectName) => {
     const projectsFolder = nconf.get('projects_folder');
-    const path = `${projectsFolder}/${CONFIGURATIONS_FOLDER}/${projectName}`;
+    const path = `${projectsFolder}/${projectName}/${CONFIGURATIONS_FOLDER}`;
 
     const fsStat = await fsPromises.stat(path);
     if (fsStat.isDirectory()) {
         return fsPromises.readdir(path);
     }
-
     throw new Error('Project does not exist');
 };
 
-module.exports = { createProject, getProjectConfigurations, getAllProjects };
+export { createProject, getProjectConfigurations, getAllProjects };

@@ -1,8 +1,4 @@
-const nconf = require('nconf');
+import * as ProjectManagement from './src/project';
 
-nconf.argv()
-    .env({ lowerCase: true, whitelist: ['projects_folder'] });
-
-const { getAllProjects, getProjectFiles, createProject } = require('./src/project');
-
-module.exports = { getAllProjects, getProjectFiles, createProject };
+const JsonConfiguratorStore = { ProjectManagement };
+export default JsonConfiguratorStore;
