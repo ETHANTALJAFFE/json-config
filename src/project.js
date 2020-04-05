@@ -1,3 +1,7 @@
+/**
+ * @module Project Management
+ */
+
 const nconf = require('nconf');
 
 if (!nconf.get('projects_folder')) {
