@@ -32,7 +32,7 @@ Returns **[Array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Gl
 
 ### getProjectConfigurations
 
-Retrieves the _filenames_ inside the directory of **projectName**
+Retrieves the configurations _filenames_ inside the directory of **projectName**
 
 #### Parameters
 

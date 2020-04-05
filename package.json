@@ -17,7 +17,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "lint-staged && npm run doc"
+      "pre-commit": "npm run doc && lint-staged"
     }
   },
   "repository": {
