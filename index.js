@@ -1,4 +1,4 @@
-import * as ProjectManagement from './src/project';
+import ProjectManagement from './src/project-management';
 
 const JsonConfiguratorStore = { ProjectManagement };
 export default JsonConfiguratorStore;

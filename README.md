@@ -5,42 +5,40 @@
 ### Table of Contents
 
 -   [ProjectManagement](#projectmanagement)
--   [createProject](#createproject)
-    -   [Parameters](#parameters)
--   [getAllProjects](#getallprojects)
--   [getProjectConfigurations](#getprojectconfigurations)
-    -   [Parameters](#parameters-1)
+    -   [createProject](#createproject)
+        -   [Parameters](#parameters)
+    -   [getAllProjects](#getallprojects)
+    -   [getProjectConfigurations](#getprojectconfigurations)
+        -   [Parameters](#parameters-1)
 
 ## ProjectManagement
 
-Project Management
-
-## createProject
+### createProject
 
 Creates a new Folder in File System using **process.env.PROJECTS_FOLDER** and given
 **projectName**. Creates sub-folders for **configurations** and **JSON Schemas**
 
-### Parameters
+#### Parameters
 
 -   `projectName` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** 
 
 Returns **[boolean](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** return **true** if a new project was created, **false** if it already exists.
 
-## getAllProjects
+### getAllProjects
 
 Retrieves a list of all existing projects in the File System
 
 Returns **[Array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)>** 
 
-## getProjectConfigurations
+### getProjectConfigurations
 
 Retrieves the _filenames_ inside the directory of **projectName**
 
-### Parameters
+#### Parameters
 
 -   `projectName`  
 
 
--   Throws **any** Will throw 'Project does not exist'
+-   Throws **[Error](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Error)** Project does not exist
 
 Returns **any** string\[]
