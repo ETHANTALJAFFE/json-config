@@ -1,14 +1,19 @@
-const fs = require('fs');
 const nconf = require('nconf');
-
-const fsPromises = fs.promises;
 
 if (!nconf.get('projects_folder')) {
     throw new Error('PROJECTS_FOLDER is undefined');
 }
+
+const fs = require('fs');
+
+const fsPromises = fs.promises;
+
+const SCHEMAS_FOLDER = 'schema';
+const CONFIGURATIONS_FOLDER = 'config';
+
 /**
  * Creates a new Folder in File System using **process.env.PROJECTS_FOLDER** and given
- * **projectName**
+ * **projectName**. Creates sub-folders for **configurations** and **JSON Schemas**
  * @param {string} projectName
  * @return {boolean} - return **true** if a new project was created, **false** if it already exists.
  */
@@ -16,13 +21,10 @@ const createProject = async (projectName) => {
     const projectsFolder = nconf.get('projects_folder');
     const path = `${projectsFolder}/${projectName}`;
 
-    try {
-        await fsPromises.mkdir(path);
-        return true;
-    } catch (e) {
-        console.error(e);
-        return false;
-    }
+    await fsPromises.mkdir(path);
+    await fsPromises.mkdir(`${path}/${CONFIGURATIONS_FOLDER}`);
+    await fsPromises.mkdir(`${path}/${SCHEMAS_FOLDER}`);
+    return true;
 };
 
 /**
@@ -41,9 +43,9 @@ const getAllProjects = async () => {
  * @param projectName
  * @return string[]
  */
-const getProjectFiles = async (projectName) => {
+const getProjectConfigurations = async (projectName) => {
     const projectsFolder = nconf.get('projects_folder');
-    const path = `${projectsFolder}/${projectName}`;
+    const path = `${projectsFolder}/${CONFIGURATIONS_FOLDER}/${projectName}`;
 
     const fsStat = await fsPromises.stat(path);
     if (fsStat.isDirectory()) {
@@ -53,4 +55,4 @@ const getProjectFiles = async (projectName) => {
     throw new Error('Project does not exist');
 };
 
-module.exports = { createProject, getProjectFiles, getAllProjects };
+module.exports = { createProject, getProjectConfigurations, getAllProjects };
