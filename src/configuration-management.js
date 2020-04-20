@@ -1,16 +1,12 @@
+import fs from 'fs';
 import nconf from 'nconf';
+import utils from './utils';
 import config from '../config.json';
 
-nconf.argv()
-    .env({ lowerCase: true, whitelist: ['projects_folder'] });
-
-if (!nconf.get('projects_folder')) {
-    throw new Error('PROJECTS_FOLDER is undefined');
-}
-
-const fs = require('fs');
-
 const fsPromises = fs.promises;
+
+utils.checkProjectsFolderExists();
+
 /**
  *
  * @name ConfigurationManagement
@@ -34,10 +30,10 @@ const ConfigurationManagement = {
     /**
      * Creates a new *Configuration File* named **configName** with **configData** inside of an existing project with
      * given **projectName**
-     * @param projectName - The project that contains the requested configuration file
-     * @param configName} - The requested configuration file
-     * @param configData - The configuration you wish to store
-     * @param suffix {string=} - a suffix to append to the *filename*
+     * @param {string} projectName - The project that contains the requested configuration file
+     * @param {string} configName - The requested configuration file
+     * @param {string} configData - The configuration you wish to store
+     * @param {string=} suffix - a suffix to append to the *filename*
      * @returns {Promise<boolean>}
      */
     createConfiguration: async (projectName, configName, configData, suffix) => {

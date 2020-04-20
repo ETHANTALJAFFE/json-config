@@ -1,20 +1,13 @@
+import fs from 'fs';
 import nconf from 'nconf';
+import utils from './utils';
 import config from '../config.json';
-
-nconf.argv()
-    .env({ lowerCase: true, whitelist: ['projects_folder'] });
-
-if (!nconf.get('projects_folder')) {
-    throw new Error('PROJECTS_FOLDER is undefined');
-}
-
-const fs = require('fs');
 
 const fsPromises = fs.promises;
 
+utils.checkProjectsFolderExists();
 
 /**
- *
  * @name ProjectManagement
  */
 const ProjectManagement = {
@@ -46,7 +39,7 @@ const ProjectManagement = {
     /**
  * Retrieves the configurations *filenames* inside the directory of **projectName**
  * @param projectName
- * @return string[]
+ * @return {string[]}
  * @throws {Error} Project does not exist
  */
     getProjectConfigurations: async (projectName) => {
