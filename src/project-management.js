@@ -34,7 +34,10 @@ const ProjectManagement = {
         const path = nconf.get('projects_folder');
 
         const pathContents = await fsPromises.readdir(path);
-        return pathContents.filter(async (file) => fsPromises.stat(`${path}/${file}`).isDirectory());
+        return pathContents.filter(async (file) => {
+            const stat = await fsPromises.stat(`${path}/${file}`);
+            return stat.isDirectory();
+        });
     },
     /**
  * Retrieves the configurations *filenames* inside the directory of **projectName**
@@ -54,7 +57,7 @@ const ProjectManagement = {
             }
         }
         throw new Error('Project does not exist');
-    },
+    }
 };
 
 export default ProjectManagement;
